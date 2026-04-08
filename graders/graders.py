@@ -1,5 +1,4 @@
 from typing import Any
-
 from environment import TASKS
 
 
@@ -19,7 +18,6 @@ def grade_task(task_id: int, action_history: list[dict[str, Any]]) -> dict[str, 
         else 0.0
     )
     normalized_score = round(total_score / expected_steps, 3) if expected_steps else 0.0
-
     return {
         "task_id": task_id,
         "task_name": task["name"],
