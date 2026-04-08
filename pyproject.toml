@@ -1,0 +1,22 @@
+[project]
+name = "content-mod-env"
+version = "1.0.0"
+description = "Content Moderation OpenEnv Environment"
+authors = [
+    { name = "anaswarak" }
+]
+dependencies = [
+    "openenv-core>=0.2.3",
+    "requests",
+    "openai",
+    "fastapi",
+    "uvicorn",
+]
+
+[project.scripts]
+server = "server.app:main"
+
+[tool.openenv]
+name = "content-mod-env"
+version = "1.0.0"
+author = "anaswarak"
