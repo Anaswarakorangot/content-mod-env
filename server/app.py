@@ -7,7 +7,13 @@ from environment import (
     ContentModerationEnv,
     ContentObservation,
 )
-from graders.graders import GRADERS
+from graders.graders import (
+    grade_task_1,
+    grade_task_2,
+    grade_task_3,
+    grade_task_4,
+    GRADERS,
+)
 
 _shared_env = ContentModerationEnv()
 
@@ -53,7 +59,7 @@ def list_tasks():
                 "max_steps": len(task["posts"]),
                 "num_items": len(task["posts"]),
                 "grader": task_id in GRADERS,
-                "grader_name": "deterministic_task_grader" if task_id in GRADERS else None,
+                "grader_name": f"graders.graders.grade_task_{task_id}",
             }
             for task_id, task in TASKS.items()
         ]
@@ -105,7 +111,11 @@ def step(request: dict):
 def grade(task_id: int):
     if task_id not in GRADERS:
         return {"error": f"No grader registered for task {task_id}"}
-    return GRADERS[task_id](task_id, _shared_env.action_history)
+    trajectory = {"actions": _shared_env.action_history}
+    return {
+        "task_id": task_id,
+        "score": GRADERS[task_id](trajectory),
+    }
 
 
 app.router.routes = ui_router.routes + app.router.routes

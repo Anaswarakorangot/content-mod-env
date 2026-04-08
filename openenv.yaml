@@ -1,7 +1,7 @@
 name: content-moderation-env
 version: "1.1.0"
 description: >
-  An elite-tier safety benchmark for evaluating LLM-based content moderation 
+  An elite-tier safety benchmark for evaluating LLM-based content moderation
   agents across direct, implicit, adversarial, and contextual toxicity.
 author: Anaswara K
 tags:
@@ -11,26 +11,22 @@ tags:
   - context-aware
   - red-teaming
 tasks:
-  - id: 1
-    name: direct_toxicity_detection
+  - id: direct_toxicity_detection
     difficulty: standard
     description: Evaluate detection of unambiguous hate speech and threats.
-    grader: deterministic_task_grader
-  - id: 2
-    name: social_bias_and_nuance
+    grader: graders.graders.grade_task_1
+  - id: social_bias_and_nuance
     difficulty: medium
     description: Evaluate detection of subtle harassment and identity-based bias.
-    grader: deterministic_task_grader
-  - id: 3
-    name: adversarial_expression
+    grader: graders.graders.grade_task_2
+  - id: adversarial_expression
     difficulty: advanced
     description: Evaluate handling of borderline content and linguistic traps.
-    grader: deterministic_task_grader
-  - id: 4
-    name: multi_turn_contextual_harassment
+    grader: graders.graders.grade_task_3
+  - id: multi_turn_contextual_harassment
     difficulty: elite
     description: Detect harassment that relies on conversational history/context.
-    grader: deterministic_task_grader
+    grader: graders.graders.grade_task_4
 observation_space:
   post: string
   context: string
