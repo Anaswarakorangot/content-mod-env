@@ -53,7 +53,7 @@ def list_tasks():
                 "max_steps": len(task["posts"]),
                 "num_items": len(task["posts"]),
                 "grader": task_id in GRADERS,
-                "grader_name": "deterministic_task_grader" if task_id in GRADERS else None,
+                "grader_name": "graders.graders:grade_task" if task_id in GRADERS else None,
             }
             for task_id, task in TASKS.items()
         ]

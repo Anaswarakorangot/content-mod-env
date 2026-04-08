@@ -15,22 +15,22 @@ tasks:
     name: direct_toxicity_detection
     difficulty: standard
     description: Evaluate detection of unambiguous hate speech and threats.
-    grader: deterministic_task_grader
+    grader: graders.graders:grade_task
   - id: 2
     name: social_bias_and_nuance
     difficulty: medium
     description: Evaluate detection of subtle harassment and identity-based bias.
-    grader: deterministic_task_grader
+    grader: graders.graders:grade_task
   - id: 3
     name: adversarial_expression
     difficulty: advanced
     description: Evaluate handling of borderline content and linguistic traps.
-    grader: deterministic_task_grader
+    grader: graders.graders:grade_task
   - id: 4
     name: multi_turn_contextual_harassment
     difficulty: elite
     description: Detect harassment that relies on conversational history/context.
-    grader: deterministic_task_grader
+    grader: graders.graders:grade_task
 observation_space:
   post: string
   context: string
